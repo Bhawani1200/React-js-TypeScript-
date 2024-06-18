@@ -1,0 +1,145 @@
+[
+    {
+      "category": "Smartphone",
+      "name": "iPhone 12 Pro",
+      "brand": "Apple",
+      "price": 999
+    },
+    {
+      "category": "Tablet",
+      "name": "iPad Pro 12.9-inch (5th generation)",
+      "brand": "Apple",
+      "price": 1099
+    },
+    {
+      "category": "Laptop",
+      "name": "MacBook Pro 14-inch",
+      "brand": "Apple",
+      "price": 1999
+    },
+    {
+      "name": "iPhone 14 Pro Max",
+      "brand": "Apple",
+      "price": 1099
+    },
+    {
+      "category": "Smartphone",
+      "name": "iPhone 14",
+      "brand": "Apple",
+      "price": 799
+    },
+    {
+      "category": "Smartphone",
+      "name": "Samsung Galaxy S22 Ultra",
+      "brand": "Samsung",
+      "price": 1199
+    },
+    {
+      "category": "Smartphone",
+      "name": "Samsung Galaxy Z Flip4",
+      "brand": "Samsung",
+      "price": 999
+    },
+    {
+      "category": "Smartphone",
+      "name": "Samsung Galaxy A53",
+      "brand": "Samsung",
+      "price": 449
+    },
+    {
+      "category": "Smartphone",
+      "name": "Samsung Galaxy S21 FE",
+      "brand": "Samsung",
+      "price": 699
+    },
+    {
+      "category": "Smartphone",
+      "name": "iPhone SE (3rd generation)",
+      "brand": "Apple",
+      "price": 429
+    },
+    {
+      "category": "Smartphone",
+      "name": "iPhone 13 Mini",
+      "brand": "Apple",
+      "price": 599
+    },
+    {
+      "category": "Tablet",
+      "name": "iPad Air (5th generation)",
+      "brand": "Apple",
+      "price": 599
+    },
+    {
+      "category": "Tablet",
+      "name": "iPad (9th generation)",
+      "brand": "Apple",
+      "price": 329
+    },
+    {
+      "category": "Laptop",
+      "name": "MacBook Air M2",
+      "brand": "Apple",
+      "price": 1199
+    },
+    {
+      "category": "Laptop",
+      "name": "MacBook Pro 16-inch",
+      "brand": "Apple",
+      "price": 2499
+    },
+    {
+      "category": "Laptop",
+      "name": "MacBook Air M2 13-inch",
+      "brand": "Apple",
+      "price": 1299
+    },
+    {
+      "category": "Laptop",
+      "name": "Lenovo ThinkPad X1 Carbon Gen 9",
+      "brand": "Lenovo",
+      "price": 1429
+    },
+    {
+      "category": "Laptop",
+      "name": "Lenovo Yoga Slim 7i",
+      "brand": "Lenovo",
+      "price": 999
+    },
+    {
+      "category": "Laptop",
+      "name": "Lenovo ThinkPad L14 (2023)",
+      "brand": "Lenovo",
+      "price": 899
+    },
+    {
+      "category": "Laptop",
+      "name": "Lenovo IdeaPad Flex 5 (2023)",
+      "brand": "Lenovo",
+      "price": 799
+    },
+    {
+      "category": "Laptop",
+      "name": "MacBook Pro 13-inch (2021)",
+      "brand": "Apple",
+      "price": 1299
+    },
+    {
+      "category": "Laptop",
+      "name": "MacBook Air (2021)",
+      "brand": "Apple",
+      "price": 999
+    },
+    {
+      "category": "Laptop",
+      "name": "MacBook Pro 16-inch (2021)",
+      "brand": "Apple",
+      "price": 2399
+    },
+    {
+      "category": "Laptop",
+      "name": "MacBook Air (M1, 2021)",
+      "brand": "Apple",
+      "price": 1099
+    }
+  ]
