@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
-
 import ProductsTable from "../../components/ProductsTable";
-import products from "../../data/products.json";
-
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { useEffect } from "react";
+import { getAllProducts } from "../../redux/products/productActions";
 const ProductList = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(getAllProducts({}));
+  }, [dispatch]);
+
   return (
     <div className="container">
       <div className="mt-10 mx-12 flex justify-between">
@@ -13,7 +20,7 @@ const ProductList = () => {
         </div>
       </div>
 
-      <ProductsTable data={products} />
+      <ProductsTable />
     </div>
   );
 };

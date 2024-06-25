@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { EMAIL_REGEX } from "../constants/Regex";
-import {register as registerUser} from "../api/auth";
-import { useState } from 'react'
+import { registerUserData } from "../redux/auth/authActions";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../redux/store";
 type RegisterFormType = {
   name: string;
   email: string;
@@ -10,32 +11,17 @@ type RegisterFormType = {
   confirmPassword: string;
 };
 const RegisterForm = () => {
-  const [loading,setLoading] =useState(false);
-  const [IsSuccess,setIsSuccess]=useState(false);
-  const { register, handleSubmit, formState, watch ,setError} =
+  const { register, handleSubmit, formState, watch } =
     useForm<RegisterFormType>({
       mode: "all",
     });
   const { errors } = formState;
+  const dispatch = useDispatch<AppDispatch>();
+  const { loading, error } = useSelector((state: RootState) => state.auth);
   const password = watch("password");
   const onSubmit = async (data: RegisterFormType) => {
-    setLoading(true);
-    try {
-      await registerUser(data);
-      setIsSuccess(true);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error:any) {
-      setError("root",error.response.data)
-    }
-    finally{
-      setLoading(false);
-    }
+    dispatch(registerUserData(data));
   };
-  if(IsSuccess) return <div className="text-green-600 text-center">
-  Register successful....Please  <Link to="/login" className="text-blue-500">
-          login
-        </Link> to continue.
-  </div>
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="py-2">
@@ -122,16 +108,14 @@ const RegisterForm = () => {
       <div className="mt-5">
         <input
           type="submit"
-          value={loading?"Submitting...":"register"}
+          value={loading ? "Submitting..." : "register"}
           className="bg-blue-500 w-full py-2 rounded-lg hover:bg-blue-600 text-white cursor-pointer"
         />
       </div>
       <div className="text-center">
-      <p className="text-red-500 mt-2 text-sm ml-1">
-      {errors.root?.message}
-      </p>
-    </div>
-    <div className="mt-8 text-sm text-center">
+        <p className="text-red-500 mt-2 text-sm ml-1">{error}</p>
+      </div>
+      <div className="mt-8 text-sm text-center">
         <span className="mr-1">Already have an account?</span>
         <Link to="/login" className="text-blue-500">
           Login
