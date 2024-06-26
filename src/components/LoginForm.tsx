@@ -1,77 +1,81 @@
 import { useForm } from "react-hook-form";
-import { EMAIL_REGEX } from "../constants/Regex";
+import { EMAIL_REGEX } from "../constants/regex";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../redux/auth/authActions";
+import { useDispatch, useSelector } from "react-redux";
 import { LoginInput } from "../types/auth";
 import { AppDispatch, RootState } from "../redux/store";
-const LoginForm = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+const LoginForm = () => {
   const { register, handleSubmit, formState } = useForm<LoginInput>({
     mode: "all",
   });
+
   const { errors } = formState;
+
   const dispatch = useDispatch<AppDispatch>();
+
   const { loading, error } = useSelector((state: RootState) => state.auth);
+
   const onSubmit = async (data: LoginInput) => {
     dispatch(loginUser(data));
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="py-2">
-        <label className="text-lg font-semibold ml-1" htmlFor="email">
+        <label htmlFor="email" className="ml-2 text-sm font-semibold">
           Email
         </label>
         <input
-          className="w-full rounded-md py-2 px-3 mt-2"
+          className="w-full border rounded-md py-2 px-3 mt-3"
           type="email"
           id="email"
           {...register("email", {
             required: {
               value: true,
-              message: "Email is required",
+              message: "Email is required.",
             },
             pattern: {
               value: EMAIL_REGEX,
-              message: "Invalid email address",
+              message: "Invalid email address.",
             },
           })}
         />
-        <p className="text-red-600 mt-2 font-2xl ml-2">
+        <p className="text-red-600 mt-2 text-sm ml-1">
           {errors.email?.message}
         </p>
       </div>
       <div className="py-2">
-        <label className="text-lg font-semibold ml-1" htmlFor="password">
+        <label htmlFor="password" className="ml-2 text-sm font-semibold">
           Password
         </label>
         <input
-          className="w-full rounded-md py-2 px-3 mt-2"
+          className="w-full border rounded-md py-2 px-3 mt-3"
           type="password"
           id="password"
           {...register("password", {
             required: {
               value: true,
-              message: "password is required",
+              message: "Password is required.",
             },
           })}
         />
-        <p className="text-red-600 mt-2 font-2xl ml-2">
+        <p className="text-red-600 mt-2 text-sm ml-1">
           {errors.password?.message}
         </p>
       </div>
-      <div className="mt-4 ml-1">
+      <div className="mt-5">
         <input
           type="submit"
-          value={loading ? "Submitting..." : "login"}
-          className=" cursor-pointer text-white font-semibold w-full py-2 bg-red-500 rounded-md hover:bg-red-600"
+          value={loading ? "Submitting..." : "LOGIN"}
+          className="bg-blue-500 w-full py-2 rounded-lg hover:bg-blue-600 text-white cursor-pointer"
         />
       </div>
       <div className="text-center">
-        <p className="text-red-500 mt-2 text-sm ml-1">{error}</p>
+        <p className="text-red-600 mt-2 text-sm ml-1">{error}</p>
       </div>
-      <div className="mt-6 text-sm text-center">
+      <div className="mt-8 text-sm text-center">
         <span className="mr-1">Don't have an account?</span>
         <Link to="/register" className="text-blue-500">
           Register

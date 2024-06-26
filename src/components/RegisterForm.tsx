@@ -1,29 +1,48 @@
 import { useForm } from "react-hook-form";
+import { EMAIL_REGEX } from "../constants/regex";
 import { Link } from "react-router-dom";
-import { EMAIL_REGEX } from "../constants/Regex";
-import { registerUserData } from "../redux/auth/authActions";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
+import { registerUser } from "../redux/auth/authActions";
+import { ToastContainer, toast } from "react-toastify";
+import { useEffect } from "react";
+
 type RegisterFormType = {
   name: string;
   email: string;
   password: string;
   confirmPassword: string;
 };
+
 const RegisterForm = () => {
   const { register, handleSubmit, formState, watch } =
     useForm<RegisterFormType>({
       mode: "all",
     });
+
   const { errors } = formState;
-  const dispatch = useDispatch<AppDispatch>();
-  const { loading, error } = useSelector((state: RootState) => state.auth);
+
   const password = watch("password");
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const { loading, error } = useSelector((state: RootState) => state.auth);
+
   const onSubmit = async (data: RegisterFormType) => {
-    dispatch(registerUserData(data));
+    dispatch(registerUser(data));
   };
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error, {
+        autoClose: 1000,
+      });
+    }
+  }, [error]);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <ToastContainer />
       <div className="py-2">
         <label htmlFor="name" className="ml-2 text-sm font-semibold">
           Name
@@ -97,7 +116,7 @@ const RegisterForm = () => {
               message: "Confirm password is required.",
             },
             validate: (value) => {
-              return value === password || "password does not match";
+              return value === password || "Passwords do not match.";
             },
           })}
         />
@@ -108,12 +127,9 @@ const RegisterForm = () => {
       <div className="mt-5">
         <input
           type="submit"
-          value={loading ? "Submitting..." : "register"}
+          value={loading ? "Submitting..." : "REGISTER"}
           className="bg-blue-500 w-full py-2 rounded-lg hover:bg-blue-600 text-white cursor-pointer"
         />
-      </div>
-      <div className="text-center">
-        <p className="text-red-500 mt-2 text-sm ml-1">{error}</p>
       </div>
       <div className="mt-8 text-sm text-center">
         <span className="mr-1">Already have an account?</span>

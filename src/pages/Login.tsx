@@ -2,21 +2,17 @@ import LoginForm from "../components/LoginForm";
 
 const Login = () => {
   return (
-   <div className="mx-5">
-     <div className="w-full shadow xl:w-6/12 lg:w-7/12 md:w-5/6 mx-auto bg-slate-100 p-10 rounded-3xl">
+    <div className="mx-5">
+      <div className="w-full shadow xl:w-6/12 lg:w-7/12 md:w-5/6 mx-auto p-10 rounded-3xl bg-gray-50">
         <div className="py-5">
-        <h1 className="text-3xl text-center font-semibold text-slate-600">Login </h1>
+          <h1 className="text-4xl font-semibold text-center text-slate-700">
+            Login
+          </h1>
         </div>
-        <LoginForm/>
+        <LoginForm />
+      </div>
     </div>
-   </div>
-    
-  )
-}; 
-  
+  );
+};
 
-
-export default Login
-
-
-
+export default Login;

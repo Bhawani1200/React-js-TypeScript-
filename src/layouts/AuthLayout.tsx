@@ -1,7 +1,7 @@
-import { Navigate, Outlet } from "react-router-dom"
-const AuthLayout = ({user}:{user:boolean}) => {
-  return user? <Outlet/>:<Navigate to="/Login" />
-  
-}
+import { Navigate, Outlet } from "react-router-dom";
 
-export default AuthLayout
+const AuthLayout = ({ user }: { user: boolean }) => {
+  return user ? <Outlet /> : <Navigate to="/login" />;
+};
+
+export default AuthLayout;

@@ -1,24 +1,29 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import navMenu from "../constants/NavMenu";
+
+import navMenu from "../constants/navMenu";
 import Logo from "./Logo";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/auth/authSlice";
+
 const Navbar = ({ user }: { user: boolean }) => {
   const dispatch = useDispatch();
+
   const logoutUser = () => {
     dispatch(logout());
   };
+
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     isActive
       ? "bg-blue-700 md:bg-transparent text-white block pl-3 pr-4 py-2 md:text-blue-700 md:p-0 rounded"
       : "text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0";
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(true);
+
   return (
-    <nav className="border-gray-200 mb-10 py-4 px-5">
+    <nav className="border-gray-200 py-4 px-5 sticky top-0 bg-white shadow">
       <div className="w-full mx-auto">
-        <div className="mx-2 flex flex-wrap items-center justify-between">
+        <div className="mx-2 flex flex-wrap items-center justify-between ">
           <Logo />
           <div className="flex md:hidden md:order-2">
             <button
@@ -60,12 +65,12 @@ const Navbar = ({ user }: { user: boolean }) => {
             </button>
           </div>
           <div
-            className={`md:flex justify-between  items-end w-full md:w-auto md:order-1 ${
+            className={`md:flex justify-between items-end w-full md:w-auto md:order-1 ${
               isMobileMenuOpen ? "" : "hidden"
             }`}
             id="mobile-menu-3"
           >
-            <ul className="flex-col md:flex-row items-center flex md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
+            <ul className="flex-col md:flex-row flex items-center md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
               {navMenu
                 .filter(({ auth }) => (user ? auth : !auth))
                 .map(({ label, route }) => (
@@ -78,7 +83,7 @@ const Navbar = ({ user }: { user: boolean }) => {
               {user ? (
                 <li>
                   <button
-                    className="bg-blue-700 text-white py-2 px-3 rounded-2xl "
+                    className="bg-blue-700 text-white py-2 px-5 rounded-3xl"
                     onClick={logoutUser}
                   >
                     Logout

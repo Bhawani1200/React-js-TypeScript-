@@ -1,15 +1,21 @@
 import { Link } from "react-router-dom";
+
 import ProductsTable from "../../components/ProductsTable";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
 import { useEffect } from "react";
 import { getAllProducts } from "../../redux/products/productActions";
+
 const ProductList = () => {
   const dispatch = useDispatch<AppDispatch>();
 
+  const { loading, query } = useSelector((state: RootState) => state.product);
+
   useEffect(() => {
-    dispatch(getAllProducts({}));
-  }, [dispatch]);
+    dispatch(getAllProducts(query));
+  }, [dispatch, query]);
+
+  if (loading) return <div className="text-center mt-10">Loading...</div>;
 
   return (
     <div className="container">

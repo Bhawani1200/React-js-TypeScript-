@@ -20,4 +20,5 @@ const productsTableColumn = [
     key: "price",
   },
 ];
+
 export default productsTableColumn;
